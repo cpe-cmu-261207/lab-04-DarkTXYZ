@@ -13,7 +13,7 @@ function addToDoList() {
         const done = document.createElement('button')
         const del = document.createElement('button')
 
-        newDiv.classList = 'flex p-2 justify-between bg-white rounded-md'
+        newDiv.classList = 'flex p-2 my-2 justify-between bg-white rounded-md'
 
         smallerDiv.classList = 'space-x-3'
 
