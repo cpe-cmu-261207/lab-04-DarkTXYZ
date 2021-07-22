@@ -2,7 +2,6 @@ const btn = document.querySelector('button')
 const input = document.querySelector('input')
 
 function addToDoList() {
-
     if (input.value == '') {
         alert("Task cannot be empty");
     }
@@ -13,7 +12,7 @@ function addToDoList() {
         const done = document.createElement('button')
         const del = document.createElement('button')
 
-        newDiv.classList = 'flex p-2 my-2 justify-between bg-white rounded-md'
+        newDiv.classList = 'flex p-2 my-2 justify-between items-center bg-white rounded-md'
 
         smallerDiv.classList = 'space-x-3'
 
@@ -37,7 +36,7 @@ function addToDoList() {
         const toDoListDiv = document.querySelector('#ToDoList')
         toDoListDiv.append(newDiv)
 
-        newDiv.addEventListener('mouseover' , () => {
+        newDiv.addEventListener('mouseover', () => {
             console.log('in')
             done.style.visibility = "visible"
             del.style.visibility = "visible"
@@ -53,10 +52,26 @@ function addToDoList() {
         })
 
         done.addEventListener('click', () => {
-            const DoneListDiv = document.querySelector('#DoneList')
-            DoneListDiv.append(newDiv)
+            addDoneList(text.innerText)
+            newDiv.remove()
         })
     }
+}
+
+function addDoneList(newText) {
+    const newDiv = document.createElement('div')
+    const text = document.createElement('p')
+
+    text.innerText = newText
+    text.classList = 'text-3xl'
+    text.style.textDecoration = 'line-through'
+
+    newDiv.classList = 'flex p-3 my-2 justify-between bg-white rounded-md'
+    
+    newDiv.append(text)
+
+    const DoneListDiv = document.querySelector('#DoneList')
+    DoneListDiv.append(newDiv)
 }
 
 input.addEventListener('keyup', (evnt) => {
