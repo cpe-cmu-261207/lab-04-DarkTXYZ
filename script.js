@@ -1,4 +1,4 @@
-const btn = document.querySelector('button')
+const btn = document.querySelector('#add')
 const input = document.querySelector('input')
 const reset = document.querySelector('#reset')
 
@@ -13,11 +13,11 @@ var todolist = JSON.parse(localStorage.getItem('TD'))
 var donelist = JSON.parse(localStorage.getItem('D'))
 
 todolist.forEach(element => {
-    addToDoList_Init(element)
+    addToDoList('init', element)
 });
 
 donelist.forEach(element => {
-    addDoneList_Init(element)
+    addDoneList('init', element)
 });
 
 function setLocal() {
@@ -25,86 +25,25 @@ function setLocal() {
     localStorage.D = JSON.stringify(donelist)
 }
 
-function addToDoList() {
-    if (input.value == '') {
-        alert("Task cannot be empty");
-    }
-    else {
-        todolist.push(input.value)
-        setLocal()
-        const newDiv = document.createElement('div')
-        const smallerDiv = document.createElement('div')
-        const text = document.createElement('p')
-        const done = document.createElement('button')
-        const del = document.createElement('button')
-
-        newDiv.classList = 'flex block p-2 my-2 justify-between items-center bg-white rounded-md'
-
-        smallerDiv.classList = 'space-x-3'
-
-        text.innerHTML = input.value
-        input.value = ''
-        text.classList = 'text-3xl'
-
-        done.classList = 'button p-2 text-3xl rounded-md bg-green-400'
-        done.innerText = 'Done'
-        done.style.visibility = "hidden"
-
-        del.classList = 'button p-2 text-3xl rounded-md bg-red-400'
-        del.innerText = 'Delete'
-        del.style.visibility = "hidden"
-
-        smallerDiv.append(done)
-        smallerDiv.append(del)
-        newDiv.append(text)
-        newDiv.append(smallerDiv)
-
-        const toDoListDiv = document.querySelector('#ToDoList')
-        toDoListDiv.append(newDiv)
-
-        newDiv.addEventListener('mouseover', () => {
-            done.style.visibility = "visible"
-            del.style.visibility = "visible"
-        })
-
-        newDiv.addEventListener('mouseout', () => {
-            done.style.visibility = "hidden"
-            del.style.visibility = "hidden"
-        })
-
-        del.addEventListener('click', () => {
-            todolist.splice(todolist.indexOf(text.innerText), 1)
-            setLocal()
-            newDiv.remove()
-        })
-
-        done.addEventListener('click', () => {
-            todolist.splice(todolist.indexOf(text.innerText), 1)
-            addDoneList(text.innerText)
-            newDiv.remove()
-        })
-    }
-}
-
-function addToDoList_Init(textAdd) {
+function addToDoBlock(textAdd) {
     const newDiv = document.createElement('div')
     const smallerDiv = document.createElement('div')
     const text = document.createElement('p')
     const done = document.createElement('button')
     const del = document.createElement('button')
 
-    newDiv.classList = 'block flex p-2 my-2 justify-between items-center bg-white rounded-md'
+    newDiv.classList = 'px-5 shadow-inner shadow-2xl flex block p-2 my-1 justify-between items-center bg-white rounded-md'
 
     smallerDiv.classList = 'space-x-3'
 
-    text.innerHTML = textAdd
+    text.innerText = textAdd
     text.classList = 'text-3xl'
 
-    done.classList = 'button p-2 text-3xl rounded-md bg-green-400'
+    done.classList = 'button p-2 text-3xl font-semibold rounded-md bg-green-400'
     done.innerText = 'Done'
     done.style.visibility = "hidden"
 
-    del.classList = 'button p-2 text-3xl rounded-md bg-red-400'
+    del.classList = 'button p-2 text-3xl font-semibold rounded-md bg-red-500'
     del.innerText = 'Delete'
     del.style.visibility = "hidden"
 
@@ -128,52 +67,31 @@ function addToDoList_Init(textAdd) {
 
     del.addEventListener('click', () => {
         todolist.splice(todolist.indexOf(text.innerText), 1)
+        setLocal()
         newDiv.remove()
     })
 
     done.addEventListener('click', () => {
         todolist.splice(todolist.indexOf(text.innerText), 1)
-        addDoneList(text.innerText)
+        addDoneList('done', text.innerText)
         newDiv.remove()
     })
 }
 
-function addDoneList(newText) {
-    donelist.push(newText)
-    setLocal()
-    const newDiv = document.createElement('div')
-    const text = document.createElement('p')
-    const svg = document.createElement('img')
-
-    text.innerText = newText
-    text.classList = 'text-3xl'
-    text.style.textDecoration = 'line-through'
-
-    svg.src = "/src/img/check.png"
-    svg.style.width = '5%'
-
-    newDiv.classList = 'flex p-3 my-2 justify-between bg-green-500 rounded-md'
-
-    newDiv.append(text)
-    newDiv.append(svg)
-
-    const DoneListDiv = document.querySelector('#DoneList')
-    DoneListDiv.append(newDiv)
-}
-
-function addDoneList_Init(textAdd) {
+function addDoneBlock(textAdd) {
     const newDiv = document.createElement('div')
     const text = document.createElement('p')
     const svg = document.createElement('img')
 
     svg.src = "/src/img/check.png"
-    svg.style.width = '5%'
+    svg.style.width = '6%'
+    svg.style.height = '6%'
 
     text.innerText = textAdd
     text.classList = 'text-3xl'
     text.style.textDecoration = 'line-through'
 
-    newDiv.classList = 'flex p-3 my-2 justify-between bg-green-500 rounded-md'
+    newDiv.classList = 'items-center px-5 transform scale-90 shadow-md flex p-3 justify-between bg-green-500 rounded-md'
 
     newDiv.append(text)
     newDiv.append(svg)
@@ -182,14 +100,43 @@ function addDoneList_Init(textAdd) {
     DoneListDiv.append(newDiv)
 }
 
-input.addEventListener('keyup', (evnt) => {
-    if (evnt.keyCode == 13)
-        addToDoList()
+function addToDoList(type, text) {
+    if (type == 'input') {
+        todolist.push(text)
+        setLocal()
+    }
+    addToDoBlock(text)
+}
+
+function addDoneList(type, newText) {
+    if (type == 'done') {
+        donelist.push(newText)
+        setLocal()
+    }
+    addDoneBlock(newText)
+}
+
+btn.addEventListener('click', () => {
+    if (input.value == '')
+        alert("Task cannot be empty")
+    else {
+        addToDoList('input', input.value)
+        input.value = ''
+    }
 })
 
-btn.addEventListener('click', addToDoList)
+input.addEventListener('keyup', (evnt) => {
+    if (evnt.keyCode == 13) {
+        if (input.value == '')
+            alert("Task cannot be empty")
+        else {
+            addToDoList('input', input.value)
+            input.value = ''
+        }
+    }
+})
 
-reset.addEventListener('click' , () => {
+reset.addEventListener('click', () => {
     localStorage.clear()
     location.reload()
 })
