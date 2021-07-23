@@ -1,5 +1,6 @@
 const btn = document.querySelector('button')
 const input = document.querySelector('input')
+const reset = document.querySelector('#reset')
 
 if (localStorage.getItem('TD') == null) {
     localStorage.setItem('TD', JSON.stringify([]))
@@ -37,7 +38,7 @@ function addToDoList() {
         const done = document.createElement('button')
         const del = document.createElement('button')
 
-        newDiv.classList = 'flex p-2 my-2 justify-between items-center bg-white rounded-md'
+        newDiv.classList = 'flex block p-2 my-2 justify-between items-center bg-white rounded-md'
 
         smallerDiv.classList = 'space-x-3'
 
@@ -92,7 +93,7 @@ function addToDoList_Init(textAdd) {
     const done = document.createElement('button')
     const del = document.createElement('button')
 
-    newDiv.classList = 'flex p-2 my-2 justify-between items-center bg-white rounded-md'
+    newDiv.classList = 'block flex p-2 my-2 justify-between items-center bg-white rounded-md'
 
     smallerDiv.classList = 'space-x-3'
 
@@ -142,14 +143,19 @@ function addDoneList(newText) {
     setLocal()
     const newDiv = document.createElement('div')
     const text = document.createElement('p')
+    const svg = document.createElement('img')
 
     text.innerText = newText
     text.classList = 'text-3xl'
     text.style.textDecoration = 'line-through'
 
-    newDiv.classList = 'flex p-3 my-2 justify-between bg-white rounded-md'
+    svg.src = "/src/img/check.png"
+    svg.style.width = '5%'
+
+    newDiv.classList = 'flex p-3 my-2 justify-between bg-green-500 rounded-md'
 
     newDiv.append(text)
+    newDiv.append(svg)
 
     const DoneListDiv = document.querySelector('#DoneList')
     DoneListDiv.append(newDiv)
@@ -158,14 +164,19 @@ function addDoneList(newText) {
 function addDoneList_Init(textAdd) {
     const newDiv = document.createElement('div')
     const text = document.createElement('p')
+    const svg = document.createElement('img')
+
+    svg.src = "/src/img/check.png"
+    svg.style.width = '5%'
 
     text.innerText = textAdd
     text.classList = 'text-3xl'
     text.style.textDecoration = 'line-through'
 
-    newDiv.classList = 'flex p-3 my-2 justify-between bg-white rounded-md'
+    newDiv.classList = 'flex p-3 my-2 justify-between bg-green-500 rounded-md'
 
     newDiv.append(text)
+    newDiv.append(svg)
 
     const DoneListDiv = document.querySelector('#DoneList')
     DoneListDiv.append(newDiv)
@@ -177,3 +188,8 @@ input.addEventListener('keyup', (evnt) => {
 })
 
 btn.addEventListener('click', addToDoList)
+
+reset.addEventListener('click' , () => {
+    localStorage.clear()
+    location.reload()
+})
