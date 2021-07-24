@@ -12,12 +12,12 @@
 	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
 		rel="stylesheet">
 
 	<style>
 		body {
-			font-family: 'Cairo', sans-serif;
+			font-family: 'Quicksand', sans-serif;
 			font-weight: 300;
 		}
 
@@ -26,7 +26,7 @@
 		}
 
 		.button:hover {
-			transform: scale(1.03);
+			transform: scale(1.08);
 		}
 
 		.block {
@@ -40,32 +40,32 @@
 		.bg {
 			z-index: -1;
 			position: fixed;
-			left: 0px;
+			right: -20%;
 		}
 	</style>
 
 </head>
 
-<body class='bg-gradient-to-r from-yellow-200 to-yellow-500'>
+<body class='bg-gradient-to-l from-blue-100 via-blue-300 to-blue-500'>
 
 	<div class="grid grid-flow-rol grid-cols-2 grid-rows-1">
-		<img src="./src/img/BG4.png" class='bg w-1/2'>
 
-		<div class='col-start-2 flex flex-col max-w-screen-md mx-auto space-y-3'>
+		<div class='flex flex-col max-w-screen-md mx-auto space-y-3 '>
 
 			<!-- title -->
-			<div>
-				<h1 class='my-5 mr-5 text-7xl font-medium'>Minimal To-Do List</h1>
-			</div>
+			<center>
+				<h1 class='my-10 text-7xl text-blue-400 font-medium'
+					style="color:white;text-shadow: 3px 3px #0f46ac;">
+					Minimal To-Do List</h1>
+			</center>
 
 			<!-- input -->
-			<div class='text-3xl flex space-x-5'>
-				<input class="p-2 border-2 hover:border-black rounded-md" type='text' spellcheck="false">
-				<button id='add'
-					class="button px-5 py-2 bg-yellow-600 hover:bg-yellow-700 rounded-md shadow-2xl border-10 border-red-600">Add
-					to ToDoList</button>
-				<button id='reset'
-					class="button px-5 py-2 bg-red-600 hover:bg-red-800 rounded-md shadow-2xl border-10 border-red-600">RESET
+			<div class='text-3xl flex space-x-5 mx-auto'>
+				<input class="p-2 bg-blue-100 border-2 border-blue-300 hover:border-black rounded-md" type='text'
+					spellcheck="false">
+				<button id='add' class="text-3xl button px-5 py-2 hover:bg-yellow-700 rounded-md shadow-2xl"
+					style="background-color:#5779b8">Add</button>
+				<button id='reset' class="button px-5 py-2 bg-red-500 hover:bg-red-800 rounded-md shadow-2xl">RESET
 				</button>
 			</div>
 
@@ -89,7 +89,11 @@
 
 			</div>
 		</div>
+
+		<img src="./src/img/A.png" class='bg h-full col-start-2'>
 	</div>
+
+	<p class="p-6" style = "position: fixed; bottom : 0px ; right : 5px;">Copyright © Pawaret's Resume 2021-2021</p>
 
 
 

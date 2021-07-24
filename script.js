@@ -32,12 +32,12 @@ function addToDoBlock(textAdd) {
     const done = document.createElement('button')
     const del = document.createElement('button')
 
-    newDiv.classList = 'px-5 shadow-inner shadow-2xl flex block p-2 my-1 justify-between items-center bg-white rounded-md'
+    newDiv.classList = 'px-5 shadow-inner shadow-2xl flex block p-3 my-1 justify-between items-center bg-white rounded-md hover:bg-blue-300'
 
     smallerDiv.classList = 'space-x-3'
 
     text.innerText = textAdd
-    text.classList = 'text-3xl'
+    text.classList = 'text-3xl font-bold'
 
     done.classList = 'button p-2 text-3xl font-semibold rounded-md bg-green-400'
     done.innerText = 'Done'
@@ -80,21 +80,23 @@ function addToDoBlock(textAdd) {
 
 function addDoneBlock(textAdd) {
     const newDiv = document.createElement('div')
+    const smallerDiv = document.createElement('div')
     const text = document.createElement('p')
     const svg = document.createElement('img')
 
     svg.src = "/src/img/check.png"
-    svg.style.width = '6%'
-    svg.style.height = '6%'
+    svg.style.width = '40px'
+    svg.style.height = '40px'
 
     text.innerText = textAdd
     text.classList = 'text-3xl'
     text.style.textDecoration = 'line-through'
 
-    newDiv.classList = 'items-center px-5 transform scale-90 shadow-md flex p-3 justify-between bg-green-500 rounded-md'
+    newDiv.classList = 'items-center shadow-md flex p-3 justify-between bg-green-500 rounded-md mt-2'
 
     newDiv.append(text)
-    newDiv.append(svg)
+    smallerDiv.append(svg)
+    newDiv.append(smallerDiv)
 
     const DoneListDiv = document.querySelector('#DoneList')
     DoneListDiv.append(newDiv)
