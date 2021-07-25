@@ -84,7 +84,7 @@ function addDoneBlock(textAdd) {
     const text = document.createElement('p')
     const svg = document.createElement('img')
 
-    svg.src = "/src/img/check.png"
+    svg.src = "./src/img/check.png"
     svg.style.width = '40px'
     svg.style.height = '40px'
 
