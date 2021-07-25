@@ -53,14 +53,19 @@
 		<div class='flex flex-col max-w-screen-md mx-auto space-y-3 '>
 
 			<!-- title -->
-			<center>
-				<h1 class='my-10 text-7xl text-blue-400 font-medium'
-					style="color:white;text-shadow: 3px 3px #0f46ac;">
-					Minimal To-Do List</h1>
-			</center>
+			<div class="flex flex-col space-y-4 mb-4">
+				<center>
+					<h1 class='mt-10 text-8xl font-medium' style="color:white;text-shadow: 3px 3px #0f46ac;">My To-Do
+						List
+					</h1>
+				</center>
+				<center>
+					<h1 class="text-lg text-white font-medium">the world is a better place when your task is done.</h1>
+				</center>
+			</div>
 
 			<!-- input -->
-			<div class='text-3xl flex space-x-5 mx-auto'>
+			<div class='mt-10 text-3xl flex space-x-5 mx-auto'>
 				<input class="p-2 bg-blue-100 border-2 border-blue-300 hover:border-black rounded-md" type='text'
 					spellcheck="false">
 				<button id='add' class="text-3xl button px-5 py-2 hover:bg-yellow-700 rounded-md shadow-2xl"
@@ -69,20 +74,10 @@
 				</button>
 			</div>
 
-			<!-- To-Do List title -->
-			<!-- <div>
-				<p class = "text-3xl font-medium" >List :</p>
-			</div> -->
-
 			<!-- To-Do List -->
 			<div id='ToDoList' class='flex flex-col-reverse'>
 
 			</div>
-
-			<!-- Done List title -->
-			<!-- <div>
-				<p class = "text-3xl font-medium" >Done:</p>
-			</div> -->
 
 			<!-- Done List -->
 			<div id='DoneList' class='flex flex-col-reverse'>
@@ -93,7 +88,7 @@
 		<img src="./src/img/A.png" class='bg h-full col-start-2'>
 	</div>
 
-	<p class="p-6" style = "position:fixed; bottom:0px; right:5px;">Copyright © Pawaret's ToDoList 2021-2021</p>
+	<p class="p-6" style="position:fixed; bottom:0px; right:5px;">Copyright © Pawaret's ToDoList 2021-2021</p>
 
 
 
