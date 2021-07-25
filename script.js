@@ -123,8 +123,8 @@ btn.addEventListener('click', () => {
         alert("Task cannot be empty")
     else {
         addToDoList('input', input.value)
-        input.value = ''
     }
+    input.value = ''
 })
 
 input.addEventListener('keyup', (evnt) => {
@@ -133,8 +133,8 @@ input.addEventListener('keyup', (evnt) => {
             alert("Task cannot be empty")
         else {
             addToDoList('input', input.value)
-            input.value = ''
         }
+        input.value = ''
     }
 })
 
