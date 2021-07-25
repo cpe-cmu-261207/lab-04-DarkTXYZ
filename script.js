@@ -119,7 +119,7 @@ function addDoneList(type, newText) {
 }
 
 btn.addEventListener('click', () => {
-    if (input.value == '')
+    if (!input.value.replace(/\s/g, '').length)
         alert("Task cannot be empty")
     else {
         addToDoList('input', input.value)
@@ -129,7 +129,7 @@ btn.addEventListener('click', () => {
 
 input.addEventListener('keyup', (evnt) => {
     if (evnt.keyCode == 13) {
-        if (input.value == '')
+        if (!input.value.replace(/\s/g, '').length)
             alert("Task cannot be empty")
         else {
             addToDoList('input', input.value)
